@@ -33,6 +33,7 @@ import (
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/opencensusexporter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter"
+	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/telemetrywerfio"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/opencensusreceiver"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver"
@@ -66,6 +67,7 @@ func Components() (
 		otlpexporter.NewFactory(),
 		otlphttpexporter.NewFactory(),
 		zipkinexporter.NewFactory(),
+		telemetrywerfio.NewFactory(),
 	)
 	errs = multierr.Append(errs, err)
 
