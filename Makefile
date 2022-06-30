@@ -1,4 +1,5 @@
 include ./Makefile.Common
+include ./Makefile.Werf
 
 RUN_CONFIG?=local/config.yaml
 CMD?=

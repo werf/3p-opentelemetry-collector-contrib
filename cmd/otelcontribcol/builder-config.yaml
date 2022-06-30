@@ -70,6 +70,7 @@ exporters:
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tanzuobservabilityexporter v0.73.0
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tencentcloudlogserviceexporter v0.73.0
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter v0.73.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/telemetrywerfio v0.73.0
 
 processors:
   - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.73.0
@@ -297,6 +298,7 @@ replaces:
   - github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/opencensus => ../../pkg/translator/opencensus
   - github.com/open-telemetry/opentelemetry-collector-contrib/exporter/pulsarexporter => ../../exporter/pulsarexporter
   - github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter => ../../exporter/zipkinexporter
+  - github.com/open-telemetry/opentelemetry-collector-contrib/exporter/telemetrywerfio => ../../exporter/telemetrywerfio
   - github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver => ../../receiver/hostmetricsreceiver
   - github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/signalfx => ../../pkg/translator/signalfx
   - github.com/open-telemetry/opentelemetry-collector-contrib/receiver/signalfxreceiver => ../../receiver/signalfxreceiver
