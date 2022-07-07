@@ -42,7 +42,6 @@ import (
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azuredataexplorerexporter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azuremonitorexporter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/carbonexporter"
-	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/clickhouseexporter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/coralogixexporter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datadogexporter"
 	dtconf "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/dynatraceexporter/config"
@@ -297,15 +296,6 @@ func TestDefaultExporters(t *testing.T) {
 				cfg.Endpoint = "http://" + endpoint
 				return cfg
 			},
-		},
-		{
-			exporter: "clickhouse",
-			getConfigFn: func() component.Config {
-				cfg := expFactories["clickhouse"].CreateDefaultConfig().(*clickhouseexporter.Config)
-				cfg.Endpoint = "tcp://" + endpoint
-				return cfg
-			},
-			skipLifecycle: true,
 		},
 		{
 			exporter: "coralogix",
