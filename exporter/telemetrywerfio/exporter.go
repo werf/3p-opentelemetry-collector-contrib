@@ -23,8 +23,10 @@ CREATE TABLE IF NOT EXISTS %s (
      executionID String,
      projectID String,
      command String,
+     attributes JSON,
      eventType String,
-     data JSON
+     eventData JSON,
+     schemaVersion UInt32
 ) ENGINE MergeTree()
 PARTITION BY toDate(ts)
 ORDER BY ts;
@@ -35,9 +37,13 @@ ORDER BY ts;
                 		executionID,
                         projectID,
                 		command,
-                		eventType,
-                		data
+                        attributes,
+                        eventType,
+                        eventData,
+                        schemaVersion
                         ) VALUES (
+                                  ?,
+                                  ?,
                                   ?,
                                   ?,
                                   ?,
@@ -173,19 +179,32 @@ func (e *clickhouseExporter) handleWerfTelemetry(ctx context.Context, td ptrace.
 				commandVal, _ := attrs.Get("command")
 				command := commandVal.StringVal()
 
+				attributesVal, _ := attrs.Get("attributes")
+				attributes := attributesVal.StringVal()
+
 				eventTypeVal, _ := attrs.Get("eventType")
 				eventType := eventTypeVal.StringVal()
 
-				dataVal, _ := attrs.Get("data")
-				data := dataVal.StringVal()
+				eventDataVal, _ := attrs.Get("eventData")
+				eventData := eventDataVal.StringVal()
+
+				schemaVersionVal, _ := attrs.Get("schemaVersion")
+				schemaVersion := schemaVersionVal.IntVal()
+
+				if schemaVersion != 1 {
+					fmt.Printf("clickhouseExporter.handleWerfTelemetry: ignore unsupported schemaVersion %d\n", schemaVersion)
+					continue
+				}
 
 				if err := batch.Append(
 					ts,
 					executionID,
 					projectID,
 					command,
+					attributes,
 					eventType,
-					data,
+					eventData,
+					uint32(schemaVersion),
 				); err != nil {
 					return fmt.Errorf("unable to append batch data: %w", err)
 				}
