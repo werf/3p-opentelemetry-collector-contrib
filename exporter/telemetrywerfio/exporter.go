@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	tableName = `events`
+	tableName = `events_new`
 
 	// language=ClickHouse SQL
 	createLogsTableSQL = `
