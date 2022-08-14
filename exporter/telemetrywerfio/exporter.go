@@ -56,15 +56,6 @@ ORDER BY ts;
 	setExperimentalModeSQL = "SET allow_experimental_object_type = 1"
 )
 
-type event struct {
-	ts          time.Time
-	executionID string
-	projectID   string
-	command     string
-	eventType   string
-	data        string
-}
-
 type clickhouseExporter struct {
 	conn      driver.Conn
 	logger    *zap.Logger
