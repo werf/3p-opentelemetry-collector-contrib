@@ -21,6 +21,7 @@ const (
 CREATE TABLE IF NOT EXISTS %s (
      ts DateTime,
      executionID String,
+     userID String,
      projectID String,
      command String,
      attributes JSON,
@@ -35,6 +36,7 @@ ORDER BY ts;
 	insertSQLTemplate = `INSERT INTO %s (
                         ts,
                 		executionID,
+                		userID,
                         projectID,
                 		command,
                         attributes,
@@ -42,6 +44,7 @@ ORDER BY ts;
                         eventData,
                         schemaVersion
                         ) VALUES (
+                                  ?,
                                   ?,
                                   ?,
                                   ?,
@@ -164,6 +167,9 @@ func (e *clickhouseExporter) handleWerfTelemetry(ctx context.Context, td ptrace.
 				executionIDVal, _ := attrs.Get("executionID")
 				executionID := executionIDVal.StringVal()
 
+				userIDVal, _ := attrs.Get("userID")
+				userID := userIDVal.StringVal()
+
 				projectIDVal, _ := attrs.Get("projectID")
 				projectID := projectIDVal.StringVal()
 
@@ -182,7 +188,7 @@ func (e *clickhouseExporter) handleWerfTelemetry(ctx context.Context, td ptrace.
 				schemaVersionVal, _ := attrs.Get("schemaVersion")
 				schemaVersion := schemaVersionVal.IntVal()
 
-				if schemaVersion != 1 {
+				if schemaVersion != 2 {
 					fmt.Printf("clickhouseExporter.handleWerfTelemetry: ignore unsupported schemaVersion %d\n", schemaVersion)
 					continue
 				}
@@ -190,6 +196,7 @@ func (e *clickhouseExporter) handleWerfTelemetry(ctx context.Context, td ptrace.
 				if err := batch.Append(
 					ts,
 					executionID,
+					userID,
 					projectID,
 					command,
 					attributes,
