@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	tableName = `events_new`
+	tableName = `events_v2`
 
 	// language=ClickHouse SQL
 	createLogsTableSQL = `
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS %s (
      eventType String,
      eventData JSON,
      schemaVersion UInt32
-) ENGINE MergeTree()
+) ENGINE ReplicatedMergeTree
 PARTITION BY toDate(ts)
 ORDER BY ts;
 `
