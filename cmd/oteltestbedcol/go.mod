@@ -13,6 +13,7 @@ require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/signalfxexporter v0.73.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/splunkhecexporter v0.73.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter v0.73.0
+	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/telemetrywerfio v0.73.0-telemetrywerfio
 	github.com/open-telemetry/opentelemetry-collector-contrib/extension/pprofextension v0.73.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage v0.73.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.73.0
@@ -313,6 +314,8 @@ replace github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prome
 replace github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/opencensus => ../../pkg/translator/opencensus
 
 replace github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter => ../../exporter/zipkinexporter
+
+replace github.com/open-telemetry/opentelemetry-collector-contrib/exporter/telemetrywerfio => ../../exporter/telemetrywerfio
 
 replace github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/signalfx => ../../pkg/translator/signalfx
 

@@ -62,6 +62,7 @@ import (
 	tanzuobservabilityexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tanzuobservabilityexporter"
 	tencentcloudlogserviceexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tencentcloudlogserviceexporter"
 	zipkinexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter"
+	telemetrywerfio "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/telemetrywerfio"
 	asapauthextension "github.com/open-telemetry/opentelemetry-collector-contrib/extension/asapauthextension"
 	awsproxy "github.com/open-telemetry/opentelemetry-collector-contrib/extension/awsproxy"
 	basicauthextension "github.com/open-telemetry/opentelemetry-collector-contrib/extension/basicauthextension"
@@ -326,6 +327,7 @@ func components() (otelcol.Factories, error) {
 		tanzuobservabilityexporter.NewFactory(),
 		tencentcloudlogserviceexporter.NewFactory(),
 		zipkinexporter.NewFactory(),
+		telemetrywerfio.NewFactory(),
 	)
 	if err != nil {
 		return otelcol.Factories{}, err

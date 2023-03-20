@@ -46,6 +46,7 @@ require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/splunkhecexporter v0.73.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/sumologicexporter v0.73.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tanzuobservabilityexporter v0.73.0
+	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/telemetrywerfio v0.73.0-telemetrywerfio
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tencentcloudlogserviceexporter v0.73.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter v0.73.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/extension/asapauthextension v0.73.0
@@ -215,7 +216,7 @@ require (
 	github.com/Azure/go-autorest/autorest/validation v0.3.1 // indirect
 	github.com/Azure/go-autorest/logger v0.2.1 // indirect
 	github.com/Azure/go-autorest/tracing v0.6.0 // indirect
-	github.com/ClickHouse/ch-go v0.52.1 // indirect
+	github.com/ClickHouse/ch-go v0.53.1 // indirect
 	github.com/ClickHouse/clickhouse-go/v2 v2.7.0 // indirect
 	github.com/DataDog/agent-payload/v5 v5.0.76 // indirect
 	github.com/DataDog/datadog-agent/pkg/obfuscate v0.44.0-rc.3 // indirect
@@ -609,9 +610,9 @@ require (
 	gonum.org/v1/gonum v0.12.0 // indirect
 	google.golang.org/api v0.112.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20230303212802-e74f57abe488 // indirect
+	google.golang.org/genproto v0.0.0-20230306155012-7f2fa6fef1f4 // indirect
 	google.golang.org/grpc v1.53.0 // indirect
-	google.golang.org/protobuf v1.29.1 // indirect
+	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
@@ -870,6 +871,8 @@ replace github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator
 replace github.com/open-telemetry/opentelemetry-collector-contrib/exporter/pulsarexporter => ../../exporter/pulsarexporter
 
 replace github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter => ../../exporter/zipkinexporter
+
+replace github.com/open-telemetry/opentelemetry-collector-contrib/exporter/telemetrywerfio => ../../exporter/telemetrywerfio
 
 replace github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver => ../../receiver/hostmetricsreceiver
 

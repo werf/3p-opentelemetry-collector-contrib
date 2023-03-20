@@ -26,6 +26,7 @@ import (
 	signalfxexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/signalfxexporter"
 	splunkhecexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/splunkhecexporter"
 	zipkinexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter"
+	telemetrywerfio "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/telemetrywerfio"
 	pprofextension "github.com/open-telemetry/opentelemetry-collector-contrib/extension/pprofextension"
 	filestorage "github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage/filestorage"
 	attributesprocessor "github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor"
@@ -91,6 +92,7 @@ func components() (otelcol.Factories, error) {
 		signalfxexporter.NewFactory(),
 		splunkhecexporter.NewFactory(),
 		zipkinexporter.NewFactory(),
+		telemetrywerfio.NewFactory(),
 	)
 	if err != nil {
 		return otelcol.Factories{}, err

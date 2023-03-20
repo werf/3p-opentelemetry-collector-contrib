@@ -1,0 +1,8 @@
+.PHONY: build-image
+build-image: otelcontribcol
+	cp bin/otelcontribcol_linux_amd64 bin/otelcontribcol
+	docker build bin -f cmd/otelcontribcol/Dockerfile -t ghcr.io/werf/telemetrywerfio-collector:latest
+
+.PHONY: push-image
+push-image:
+	docker push ghcr.io/werf/telemetrywerfio-collector:latest
