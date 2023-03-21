@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS %s (
      eventType String,
      eventData JSON,
      schemaVersion UInt32
-) ENGINE ReplicatedMergeTree
+) ENGINE ReplicatedMergeTree('/clickhouse/tables/{shard}/{database}/%s', '{replica}')
 PARTITION BY toDate(ts)
 ORDER BY ts;
 `
@@ -94,7 +94,7 @@ func newExporter(logger *zap.Logger, cfg *Config) (*clickhouseExporter, error) {
 		return nil, fmt.Errorf("unable to set experimental object type: %w", err)
 	}
 
-	if err := conn.Exec(ctx, fmt.Sprintf(createLogsTableSQL, tableName)); err != nil {
+	if err := conn.Exec(ctx, fmt.Sprintf(createLogsTableSQL, tableName, tableName)); err != nil {
 		return nil, fmt.Errorf("exec create table sql: %w", err)
 	}
 
